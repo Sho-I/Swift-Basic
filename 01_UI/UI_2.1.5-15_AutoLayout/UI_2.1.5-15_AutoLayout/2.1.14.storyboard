@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="HTB-3b-C4L">
+            <objects>
+                <viewController id="pxb-C6-Qe7" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vVM-g1-tv0"/>
+                        <viewControllerLayoutGuide type="bottom" id="Oi8-oN-ALv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oAB-g8-S2D">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2q-ru-l13">
+                                <rect key="frame" x="0.0" y="278" width="200" height="44"/>
+                                <color key="backgroundColor" red="0.80035176699999999" green="0.80035176699999999" blue="0.80035176699999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="LtY-3N-nIs"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p3-zI-jTH">
+                                <rect key="frame" x="400" y="278" width="200" height="44"/>
+                                <color key="backgroundColor" red="0.4992432919" green="0.4992432919" blue="0.4992432919" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="3hP-zS-yWP"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IiI-DF-h4d">
+                                <rect key="frame" x="200" y="278" width="200" height="44"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="QGv-VC-ps7"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="W2q-ru-l13" firstAttribute="centerY" secondItem="oAB-g8-S2D" secondAttribute="centerY" id="0WR-bA-nGT"/>
+                            <constraint firstItem="IiI-DF-h4d" firstAttribute="width" secondItem="W2q-ru-l13" secondAttribute="width" id="Nv2-HS-Lgd"/>
+                            <constraint firstItem="W2q-ru-l13" firstAttribute="leading" secondItem="oAB-g8-S2D" secondAttribute="leading" id="XFi-3Q-2rj"/>
+                            <constraint firstItem="6p3-zI-jTH" firstAttribute="centerY" secondItem="oAB-g8-S2D" secondAttribute="centerY" id="aTA-ya-krT"/>
+                            <constraint firstItem="6p3-zI-jTH" firstAttribute="leading" secondItem="IiI-DF-h4d" secondAttribute="trailing" id="b1j-6S-Buk"/>
+                            <constraint firstItem="6p3-zI-jTH" firstAttribute="width" secondItem="W2q-ru-l13" secondAttribute="width" id="dQL-hu-zJS"/>
+                            <constraint firstItem="IiI-DF-h4d" firstAttribute="centerY" secondItem="oAB-g8-S2D" secondAttribute="centerY" id="hQM-kz-JnR"/>
+                            <constraint firstAttribute="trailing" secondItem="6p3-zI-jTH" secondAttribute="trailing" id="lKr-kI-0al"/>
+                            <constraint firstItem="IiI-DF-h4d" firstAttribute="leading" secondItem="W2q-ru-l13" secondAttribute="trailing" id="wfy-8H-E3Z"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6YS-z7-goD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="106" y="249"/>
+        </scene>
+    </scenes>
+</document>

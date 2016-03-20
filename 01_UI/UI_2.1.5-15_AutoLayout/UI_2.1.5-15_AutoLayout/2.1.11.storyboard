@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="QdU-6x-99x">
+            <objects>
+                <viewController id="aUk-md-mQA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cve-QM-nS4"/>
+                        <viewControllerLayoutGuide type="bottom" id="sZa-Kx-Ydr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Iv9-CH-AgL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y64-iA-rwY">
+                                <rect key="frame" x="120" y="120" width="360" height="360"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="y64-iA-rwY" firstAttribute="centerY" secondItem="Iv9-CH-AgL" secondAttribute="centerY" id="Csa-OY-pO1"/>
+                            <constraint firstItem="y64-iA-rwY" firstAttribute="width" secondItem="Iv9-CH-AgL" secondAttribute="width" multiplier="0.6" id="GVO-W1-CvJ"/>
+                            <constraint firstItem="y64-iA-rwY" firstAttribute="height" secondItem="Iv9-CH-AgL" secondAttribute="height" multiplier="0.6" id="U27-TS-hZc"/>
+                            <constraint firstItem="y64-iA-rwY" firstAttribute="centerX" secondItem="Iv9-CH-AgL" secondAttribute="centerX" id="pwg-ga-POE"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BiC-IE-wlz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="576" y="197"/>
+        </scene>
+    </scenes>
+</document>
