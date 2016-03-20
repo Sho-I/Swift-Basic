@@ -2,14 +2,19 @@
 //  ViewController.swift
 //  UI_2.1.1_UILabel
 //
-//  Created by Aryzae on 2016/03/15.
-//  Copyright © 2016年 Aryzae. All rights reserved.
+//  Created by ShoIto on 2016/03/15.
+//  Copyright © 2016年 ShoIto. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // MARK: interface
+    @IBOutlet var helloLabel: UILabel!
+    let hello = "Hello World"
 
+    // MARK: implementation
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +25,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        helloLabel.text = hello
+    }
 }
 
