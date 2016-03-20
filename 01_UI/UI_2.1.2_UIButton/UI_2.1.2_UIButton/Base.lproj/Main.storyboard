@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UI_2_1_2_UIButton" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tse-VS-vle">
+                                <rect key="frame" x="0.0" y="310" width="600" height="290"/>
+                                <color key="backgroundColor" red="0.91882877181457145" green="0.92541960734026729" blue="0.95858556937172779" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="changeLabelColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SLR-gH-Cx0"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-nt-CP5">
+                                <rect key="frame" x="0.0" y="20" width="600" height="290"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tse-VS-vle" firstAttribute="height" secondItem="PPb-nt-CP5" secondAttribute="height" id="0fA-0k-pbB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tse-VS-vle" secondAttribute="bottom" id="2sZ-Dc-2oF"/>
+                            <constraint firstAttribute="trailing" secondItem="PPb-nt-CP5" secondAttribute="trailing" id="61L-Hb-Bsb"/>
+                            <constraint firstItem="tse-VS-vle" firstAttribute="width" secondItem="PPb-nt-CP5" secondAttribute="width" id="Ajc-LD-8Kn"/>
+                            <constraint firstItem="PPb-nt-CP5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Fxi-bU-5qK"/>
+                            <constraint firstItem="tse-VS-vle" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VpN-E2-XwH"/>
+                            <constraint firstItem="PPb-nt-CP5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="e94-mY-Cbq"/>
+                            <constraint firstItem="tse-VS-vle" firstAttribute="top" secondItem="PPb-nt-CP5" secondAttribute="bottom" id="vmu-dS-nbT"/>
+                            <constraint firstAttribute="trailing" secondItem="tse-VS-vle" secondAttribute="trailing" id="zrU-DA-8mZ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="colorButton" destination="tse-VS-vle" id="qWr-NB-oNS"/>
+                        <outlet property="displayLabel" destination="PPb-nt-CP5" id="KgM-R3-SAi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="418"/>
+        </scene>
+    </scenes>
+</document>
