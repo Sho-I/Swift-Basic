@@ -12,6 +12,8 @@
 		C66F8A931C9E659A002A5063 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66F8A911C9E659A002A5063 /* Main.storyboard */; };
 		C66F8A951C9E659A002A5063 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C66F8A941C9E659A002A5063 /* Assets.xcassets */; };
 		C66F8A981C9E659A002A5063 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C66F8A961C9E659A002A5063 /* LaunchScreen.storyboard */; };
+		C66F8AF21C9FB7E7002A5063 /* Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F8AF11C9FB7E7002A5063 /* Random.swift */; };
+		C66F8AF41C9FB818002A5063 /* WafuPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66F8AF31C9FB818002A5063 /* WafuPalette.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C66F8A941C9E659A002A5063 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C66F8A971C9E659A002A5063 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C66F8A991C9E659A002A5063 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C66F8AF11C9FB7E7002A5063 /* Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Random.swift; sourceTree = "<group>"; };
+		C66F8AF31C9FB818002A5063 /* WafuPalette.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WafuPalette.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				C66F8A8D1C9E659A002A5063 /* AppDelegate.swift */,
 				C66F8A8F1C9E659A002A5063 /* ViewController.swift */,
+				C66F8AF31C9FB818002A5063 /* WafuPalette.swift */,
+				C66F8AF11C9FB7E7002A5063 /* Random.swift */,
 				C66F8A911C9E659A002A5063 /* Main.storyboard */,
 				C66F8A941C9E659A002A5063 /* Assets.xcassets */,
 				C66F8A961C9E659A002A5063 /* LaunchScreen.storyboard */,
@@ -137,6 +143,8 @@
 			files = (
 				C66F8A901C9E659A002A5063 /* ViewController.swift in Sources */,
 				C66F8A8E1C9E659A002A5063 /* AppDelegate.swift in Sources */,
+				C66F8AF41C9FB818002A5063 /* WafuPalette.swift in Sources */,
+				C66F8AF21C9FB7E7002A5063 /* Random.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +294,7 @@
 				C66F8A9E1C9E659A002A5063 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

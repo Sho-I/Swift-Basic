@@ -18,38 +18,63 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tse-VS-vle">
-                                <rect key="frame" x="0.0" y="310" width="600" height="290"/>
-                                <color key="backgroundColor" red="0.91882877181457145" green="0.92541960734026729" blue="0.95858556937172779" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="165" width="600" height="145"/>
+                                <color key="backgroundColor" red="0.98147087700000002" green="0.98147087700000002" blue="0.98147087700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="changeLabelColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SLR-gH-Cx0"/>
+                                    <action selector="changeLeftLabelColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JRO-La-JTF"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPb-nt-CP5">
-                                <rect key="frame" x="0.0" y="20" width="600" height="290"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="145"/>
+                                <color key="backgroundColor" red="0.9188287718" green="0.92541960729999995" blue="0.95858556939999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="49u-kv-UpH">
+                                <rect key="frame" x="0.0" y="310" width="600" height="145"/>
+                                <color key="backgroundColor" red="0.4992432919" green="0.4992432919" blue="0.4992432919" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8R-fa-eE7">
+                                <rect key="frame" x="0.0" y="455" width="600" height="145"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="changeRightLabelColor:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cM1-QS-ZUD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="tse-VS-vle" firstAttribute="height" secondItem="PPb-nt-CP5" secondAttribute="height" id="0fA-0k-pbB"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="tse-VS-vle" secondAttribute="bottom" id="2sZ-Dc-2oF"/>
-                            <constraint firstAttribute="trailing" secondItem="PPb-nt-CP5" secondAttribute="trailing" id="61L-Hb-Bsb"/>
-                            <constraint firstItem="tse-VS-vle" firstAttribute="width" secondItem="PPb-nt-CP5" secondAttribute="width" id="Ajc-LD-8Kn"/>
-                            <constraint firstItem="PPb-nt-CP5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Fxi-bU-5qK"/>
-                            <constraint firstItem="tse-VS-vle" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="VpN-E2-XwH"/>
-                            <constraint firstItem="PPb-nt-CP5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="e94-mY-Cbq"/>
-                            <constraint firstItem="tse-VS-vle" firstAttribute="top" secondItem="PPb-nt-CP5" secondAttribute="bottom" id="vmu-dS-nbT"/>
-                            <constraint firstAttribute="trailing" secondItem="tse-VS-vle" secondAttribute="trailing" id="zrU-DA-8mZ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="v8R-fa-eE7" secondAttribute="bottom" id="2hS-rc-WEv"/>
+                            <constraint firstItem="49u-kv-UpH" firstAttribute="height" secondItem="PPb-nt-CP5" secondAttribute="height" id="3Lf-6t-cGf"/>
+                            <constraint firstItem="49u-kv-UpH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5Jc-eu-zCO"/>
+                            <constraint firstItem="PPb-nt-CP5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5lM-m4-DYQ"/>
+                            <constraint firstItem="v8R-fa-eE7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ab7-u8-kih"/>
+                            <constraint firstItem="PPb-nt-CP5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BSo-HT-EA7"/>
+                            <constraint firstItem="tse-VS-vle" firstAttribute="top" secondItem="PPb-nt-CP5" secondAttribute="bottom" id="KDt-QY-nA5"/>
+                            <constraint firstAttribute="trailing" secondItem="tse-VS-vle" secondAttribute="trailing" id="QVl-gp-sJM"/>
+                            <constraint firstItem="tse-VS-vle" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="S66-c1-H8t"/>
+                            <constraint firstItem="v8R-fa-eE7" firstAttribute="top" secondItem="49u-kv-UpH" secondAttribute="bottom" id="WJZ-EY-uZA"/>
+                            <constraint firstItem="v8R-fa-eE7" firstAttribute="height" secondItem="PPb-nt-CP5" secondAttribute="height" id="Xau-JU-WRj"/>
+                            <constraint firstAttribute="trailing" secondItem="v8R-fa-eE7" secondAttribute="trailing" id="gQq-0e-UPR"/>
+                            <constraint firstAttribute="trailing" secondItem="PPb-nt-CP5" secondAttribute="trailing" id="pBB-A4-t6d"/>
+                            <constraint firstItem="tse-VS-vle" firstAttribute="height" secondItem="PPb-nt-CP5" secondAttribute="height" id="sq7-xT-e62"/>
+                            <constraint firstAttribute="trailing" secondItem="49u-kv-UpH" secondAttribute="trailing" id="uwi-tN-AiC"/>
+                            <constraint firstItem="49u-kv-UpH" firstAttribute="top" secondItem="tse-VS-vle" secondAttribute="bottom" id="wrM-89-1bu"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="colorButton" destination="tse-VS-vle" id="qWr-NB-oNS"/>
-                        <outlet property="displayLabel" destination="PPb-nt-CP5" id="KgM-R3-SAi"/>
+                        <outlet property="leftButton" destination="tse-VS-vle" id="Ohz-L4-ZvG"/>
+                        <outlet property="leftLabel" destination="PPb-nt-CP5" id="4GL-FI-YVt"/>
+                        <outlet property="rightButton" destination="v8R-fa-eE7" id="HWF-Vy-lCV"/>
+                        <outlet property="rightLabel" destination="49u-kv-UpH" id="h9T-97-ioN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
