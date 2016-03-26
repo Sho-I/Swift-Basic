@@ -6,4 +6,8 @@
 //  Copyright © 2016年 Aryzae. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class SymbolCell: UICollectionViewCell {
+    
+}

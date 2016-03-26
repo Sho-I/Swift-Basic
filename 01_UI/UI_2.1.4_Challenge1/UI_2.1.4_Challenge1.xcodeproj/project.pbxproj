@@ -12,6 +12,8 @@
 		C61A0A601CA6731100475BAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C61A0A5E1CA6731100475BAA /* Main.storyboard */; };
 		C61A0A621CA6731100475BAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C61A0A611CA6731100475BAA /* Assets.xcassets */; };
 		C61A0A651CA6731100475BAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C61A0A631CA6731100475BAA /* LaunchScreen.storyboard */; };
+		C61A0A6D1CA6922500475BAA /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A0A6C1CA6922500475BAA /* NumberCell.swift */; };
+		C61A0A6F1CA69A5000475BAA /* SymbolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A0A6E1CA69A5000475BAA /* SymbolCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		C61A0A611CA6731100475BAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C61A0A641CA6731100475BAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C61A0A661CA6731100475BAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C61A0A6C1CA6922500475BAA /* NumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
+		C61A0A6E1CA69A5000475BAA /* SymbolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 			children = (
 				C61A0A5A1CA6731100475BAA /* AppDelegate.swift */,
 				C61A0A5C1CA6731100475BAA /* ViewController.swift */,
+				C61A0A6C1CA6922500475BAA /* NumberCell.swift */,
+				C61A0A6E1CA69A5000475BAA /* SymbolCell.swift */,
 				C61A0A5E1CA6731100475BAA /* Main.storyboard */,
 				C61A0A611CA6731100475BAA /* Assets.xcassets */,
 				C61A0A631CA6731100475BAA /* LaunchScreen.storyboard */,
@@ -136,6 +142,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C61A0A5D1CA6731100475BAA /* ViewController.swift in Sources */,
+				C61A0A6F1CA69A5000475BAA /* SymbolCell.swift in Sources */,
+				C61A0A6D1CA6922500475BAA /* NumberCell.swift in Sources */,
 				C61A0A5B1CA6731100475BAA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,7 +207,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -239,7 +247,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -252,6 +260,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UI_2.1.4_Challenge1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.shoito.UI-2-1-4-Challenge1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -263,6 +272,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = UI_2.1.4_Challenge1/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.shoito.UI-2-1-4-Challenge1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
