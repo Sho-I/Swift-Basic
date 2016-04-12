@@ -13,12 +13,25 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
     // MARK: interface
     @IBOutlet var displayLabel: UILabel!
     @IBOutlet var buttonCollectionView: UICollectionView!
-//    var customButtonCell: CustomButtonCell!
-    
-    
     
     let CUSTOM_BUTTON_CELL_ID = "CustomButtonCellId"
-    let cellCount: Int = 19
+    let symbolArray = ["C","±","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","0",".","="]
+    var keepRect = CGRectZero
+    // C,±,%
+    let CELL_BG_COLOR_GRAY_R: CGFloat = 0xc0/0xff
+    let CELL_BG_COLOR_GRAY_G: CGFloat = 0xc0/0xff
+    let CELL_BG_COLOR_GRAY_B: CGFloat = 0xc3/0xff
+    let CELL_BG_COLOR_GRAY_A: CGFloat = 0xff/0xff
+    // .,0~9
+    let CELL_BG_COLOR_LIGHT_GRAY_R: CGFloat = 0xc8/0xff
+    let CELL_BG_COLOR_LIGHT_GRAY_G: CGFloat = 0xc9/0xff
+    let CELL_BG_COLOR_LIGHT_GRAY_B: CGFloat = 0xcc/0xff
+    let CELL_BG_COLOR_LIGHT_GRAY_A: CGFloat = 0xff/0xff
+    // ÷,×,-,+,=
+    let CELL_BG_COLOR_ORANGE_R: CGFloat = 0xf8/0xff
+    let CELL_BG_COLOR_ORANGE_G: CGFloat = 0x79/0xff
+    let CELL_BG_COLOR_ORANGE_B: CGFloat = 0x12/0xff
+    let CELL_BG_COLOR_ORANGE_A: CGFloat = 0xff/0xff
     
     // MARK: implementation
     override func viewDidLoad() {
@@ -28,9 +41,7 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
         // Delegate & DataSource
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
-//        buttonCollectionView.registerClass(CustomButtonCell.self, forCellWithReuseIdentifier: CUSTOM_BUTTON_CELL_ID)
-        
-        initilizeCollectionViewLayout()
+        buttonCollectionView.registerClass(CustomButtonCell.self, forCellWithReuseIdentifier: CUSTOM_BUTTON_CELL_ID)
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,29 +55,9 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
         print("\(self.view.bounds)")
     }
     
-    // MARK: Initilize Function
-    private func initilizeCollectionViewLayout() {
-        // CollectionViewLayout Settings
-        guard let collectionViewLayout = buttonCollectionView!.collectionViewLayout as? CustomCollectionViewLayout else {
-            return
-        }
-//        collectionViewLayout.maxColumns = 4
-//        collectionViewLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-//        collectionViewLayout.minimumLineSpacing = 0
-//        collectionViewLayout.minimumInteritemSpacing = 0
-        
-        // Cell Detail
-//        collectionViewLayout.cellPattern.append((sideLength: 2, heightLength: 2, column: 0, row: 0))
-//        collectionViewLayout.cellPattern.append((sideLength: 1, heightLength: 1, column: 2, row: 0))
-//        collectionViewLayout.cellPattern.append((sideLength: 1, heightLength: 2, column: 2, row: 1))
-//        collectionViewLayout.cellPattern.append((sideLength: 1, heightLength: 2, column: 0, row: 2))
-//        collectionViewLayout.cellPattern.append((sideLength: 1, heightLength: 1, column: 1, row: 2))
-//        collectionViewLayout.cellPattern.append((sideLength: 2, heightLength: 1, column: 1, row: 3))
-    }
-    
     // MARK: UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return cellCount
+        return symbolArray.count
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -74,24 +65,38 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        collectionView.registerClass(CustomButtonCell.self, forCellWithReuseIdentifier: CUSTOM_BUTTON_CELL_ID)
-
-        let width = collectionView.bounds.width
-        let height = collectionView.bounds.height
-        
-//        let cellRect = CGRectMake(0, 0, 50, 50)
         var customButtonCell = CustomButtonCell()
-        customButtonCell.backgroundColor = .blueColor()
-//        customButtonCell.titleLabel = UILabel(frame: cellRect)
-//        customButtonCell.titleLabel.layer.borderWidth = 1.0
-//        customButtonCell.titleLabel.layer.borderColor = UIColor.blueColor().CGColor
-//        customButtonCell.titleLabel.text = "1"
-        customButtonCell = buttonCollectionView!.dequeueReusableCellWithReuseIdentifier(CUSTOM_BUTTON_CELL_ID, forIndexPath: indexPath) as! CustomButtonCell//        customButtonCell.bounds = cellRect
-//        customButtonCell.setLabel()
-//        customButtonCell.titleLabel = UILabel()
-//        customButtonCell.titleLabel.text = "1"
-//        print("\(width):\(height)")
-//        print("\(cellRect)")
+        customButtonCell = buttonCollectionView!.dequeueReusableCellWithReuseIdentifier(CUSTOM_BUTTON_CELL_ID, forIndexPath: indexPath) as! CustomButtonCell
+        customButtonCell.symbolLabel.text = symbolArray[indexPath.row]
+        
+        // 特殊処理(0の位置調整)
+        if customButtonCell.symbolLabel.text == "0" {
+            customButtonCell.symbolLabel.frame = keepRect // boundsで指定すると中央合わせになる
+        } else {
+            keepRect = customButtonCell.symbolLabel.frame
+        }
+        
+        // Cellの背景色設定
+        if indexPath.row % 4 == 3 || indexPath.row == symbolArray.count - 1 {
+            customButtonCell.backgroundColor = UIColor(red: CELL_BG_COLOR_ORANGE_R,
+                                                       green: CELL_BG_COLOR_ORANGE_G,
+                                                       blue: CELL_BG_COLOR_ORANGE_B,
+                                                       alpha: CELL_BG_COLOR_ORANGE_A)
+            customButtonCell.symbolLabel.textColor = .whiteColor()
+        } else {
+            switch indexPath.row {
+            case 0...3:
+                customButtonCell.backgroundColor = UIColor(red: CELL_BG_COLOR_GRAY_R,
+                                                           green: CELL_BG_COLOR_GRAY_G,
+                                                           blue: CELL_BG_COLOR_GRAY_B,
+                                                           alpha: CELL_BG_COLOR_GRAY_A)
+            default:
+                customButtonCell.backgroundColor = UIColor(red: CELL_BG_COLOR_LIGHT_GRAY_R,
+                                                           green: CELL_BG_COLOR_LIGHT_GRAY_G,
+                                                           blue: CELL_BG_COLOR_LIGHT_GRAY_B,
+                                                           alpha: CELL_BG_COLOR_LIGHT_GRAY_A)
+            }
+        }
         
         return customButtonCell
     }
