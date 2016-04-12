@@ -55,6 +55,12 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
         print("\(self.view.bounds)")
     }
     
+    // MARK: UICollectionViewDelegate
+    func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        print(indexPath.row)
+        return true
+    }
+    
     // MARK: UICollectionViewDataSource
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return symbolArray.count
