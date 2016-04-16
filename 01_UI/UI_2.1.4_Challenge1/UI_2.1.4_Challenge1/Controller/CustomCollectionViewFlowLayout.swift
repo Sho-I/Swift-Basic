@@ -2,8 +2,8 @@
 //  CustomCollectionViewFlowLayout.swift
 //  UI_2.1.4_Challenge1
 //
-//  Created by Aryzae on 2016/04/08.
-//  Copyright © 2016年 Aryzae. All rights reserved.
+//  Created by ShoIto on 2016/04/08.
+//  Copyright © 2016年 ShoIto. All rights reserved.
 //
 
 import UIKit

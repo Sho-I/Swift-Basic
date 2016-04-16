@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  UI_2.1.4_Challenge1
 //
-//  Created by Aryzae on 2016/03/26.
-//  Copyright © 2016年 Aryzae. All rights reserved.
+//  Created by ShoIto on 2016/03/26.
+//  Copyright © 2016年 ShoIto. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +15,8 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
     @IBOutlet var buttonCollectionView: UICollectionView!
     
     let CUSTOM_BUTTON_CELL_ID = "CustomButtonCellId"
-    let symbolArray = ["C","±","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","0",".","="]
+    let symbolArray = ["AC","±","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","0",".","="]
+    private let numSections = 1
     var keepRect = CGRectZero
     // C,±,%
     let CELL_BG_COLOR_GRAY_R: CGFloat = 0xc0/0xff
@@ -67,7 +68,7 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
     }
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+        return numSections
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
