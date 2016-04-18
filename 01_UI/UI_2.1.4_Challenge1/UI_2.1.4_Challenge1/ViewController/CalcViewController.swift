@@ -8,16 +8,21 @@
 
 import UIKit
 
-class CalcViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CalcViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CalcProtocol {
 
     // MARK: interface
     @IBOutlet var displayLabel: UILabel!
     @IBOutlet var buttonCollectionView: UICollectionView!
     
     let CUSTOM_BUTTON_CELL_ID = "CustomButtonCellId"
-    let symbolArray = ["AC","±","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","0",".","="]
+    var symbolArray = ["AC","±","%","÷","7","8","9","×","4","5","6","-","1","2","3","+","0",".","="]
     private let numSections = 1
     var keepRect = CGRectZero
+    
+    var inputNumber = String()
+    var isAllowNumberDelete = false
+    var inputArray = [String]()
+    var isClear = false
     // C,±,%
     let CELL_BG_COLOR_GRAY_R: CGFloat = 0xc0/0xff
     let CELL_BG_COLOR_GRAY_G: CGFloat = 0xc0/0xff
@@ -43,6 +48,9 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
         buttonCollectionView.delegate = self
         buttonCollectionView.dataSource = self
         buttonCollectionView.registerClass(CustomButtonCell.self, forCellWithReuseIdentifier: CUSTOM_BUTTON_CELL_ID)
+        
+        // 省略表示にならないために
+        displayLabel.adjustsFontSizeToFitWidth = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,8 +66,86 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: UICollectionViewDelegate
     func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        print(indexPath.row)
+        let index = indexPath.row
+        // この辺enum使えばもっとスマートにいけるはず
+        switch index {
+        case 0:
+            // AC/C クリア
+//            if isClear {
+                inputNumber.removeAll()
+                isAllowNumberDelete = false
+                inputArray.removeAll()
+                displayLabel.text = "0"
+//            }
+        case 1:
+            // ±,
+            inputNumber = calculate(inputNumber, symbol: symbolArray[index])
+            displayLabel.text = inputNumber
+        case 2:
+            // %
+            isAllowNumberDelete = true
+            inputNumber = calculate(inputNumber, symbol: symbolArray[index])
+            displayLabel.text = inputNumber
+        case 4...6, 8...10, 12...14, 16:
+            // 数字
+            if inputNumber.characters.count < 9 {
+                if isAllowNumberDelete {
+                    inputNumber.removeAll()
+                    isAllowNumberDelete = false
+                }
+                inputNumber.append(Character(symbolArray[index]))
+            } else {
+                // 文字数制限により入力受け付けない
+                return false
+            }
+            // 0000の表示防止
+            if !inputNumber.containsString(".") {
+                inputNumber = moldingZero(inputNumber)
+            }
+            displayLabel.text = inputNumber
+        case 3, 7:
+            // ÷, ×
+            calculate(inputArray)
+            commonPostProcessing(index)
+        case 11, 15:
+            // -, +
+            calculate(inputArray)
+            commonPostProcessing(index)
+        case 17:
+            // 小数点
+            inputNumber.append(Character(symbolArray[index]))
+        case 18:
+            // =
+            calculate(inputArray)
+            commonPostProcessing(index)
+        default:
+            // 数字以外が入力されたので、配列に格納&数字用格納変数は消去
+//            inputArray.append(inputNumber)
+//            isAllowNumberDelete = true
+//            inputArray.append(symbolArray[index])
+//            commonCalc(index)
+            let tmpStr = calculate(inputArray)
+//            let tmpCalc = Int(tmpStr)
+//            displayLabel.text = String(tmpCalc)
+        }
+        
+        if index == 0 {
+            symbolArray[0] = "AC"
+            isClear = true
+        } else {
+            symbolArray[0] = "C"
+            isClear = false
+        }
+        
         return true
+    }
+    
+    // MARK: Private Method
+    private func commonPostProcessing(index: Int) {
+        // 数字以外が入力されたので、配列に格納&数字用格納変数は消去
+        inputArray.append(inputNumber)
+        isAllowNumberDelete = true
+        inputArray.append(symbolArray[index])
     }
     
     // MARK: UICollectionViewDataSource
