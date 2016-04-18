@@ -8,47 +8,10 @@
 
 import Foundation
 
-//struct Calculate {
-//    
-//    static func calc(symbols:[AnyObject]) -> [AnyObject] {
-//        var reStructArray = [AnyObject]()
-//        var count: Int = 0
-//        for symbol in symbols {
-//            if (count - 1) < 0 {
-//                reStructArray.append(symbol)
-//            } else {
-//                let unknownType = reStructArray[count - 1]
-//                // classチェックで"is"が使える
-//                if (unknownType is NSNumber) && (symbol is NSNumber) {
-//                    // 前に入力されたものも数字なので桁数増やす
-//                    reStructArray[count - 1] = digitsIncrement(Int(unknownType as! NSNumber), singleDigit: Int(symbol as! NSNumber))
-//                } else {
-//                    // 前に入力されたものは数字以外
-//                    reStructArray[count] = symbol
-//                }
-//            }
-//            // インクリメントは+=推奨
-//            count += 1
-//        }
-//        return reStructArray
-//    }
-//    
-//    // 数字が連続で入力されている場合は、桁数を増やす処理
-//    static func digitsIncrement(multiDigits: Int, singleDigit: Int) -> Int {
-//        return (multiDigits * 10 + singleDigit)
-//    }
-//}
-
-/*
- ±、末尾が数字なら-1をかける、そうでなければ-0をかける
- ×、÷、%
- 
- */
-
 protocol CalcProtocol {
     func moldingZero(number: String) -> String
     func calculate(numberString: String, symbol: String) -> String
-    func calculate(calcArray: [String]) -> [String]?
+    func calculate(calcArray: [String]) -> [String]
 }
 
 extension CalcProtocol {
@@ -87,14 +50,153 @@ extension CalcProtocol {
         return "0"
     }
     
-    func calculate(calcArray: [String]) -> [String]? {
-        print("extension")
-        if calcArray.count > 2 {
-            
-        } else {
-            return nil
+    func calculate(argumentArray: [String]) -> [String] {
+        // 1+2+     3'+
+        // 1+2*3+   7'+
+        // 1+2*3*   1+6'*
+        // 2*3*     6'*
+        // 2*3+     6'+
+        var calcArray = argumentArray
+        var isDouble = false
+        // repeat用フラグ
+        var isFinishIntegration = true
+        var isFinishDivision = true
+        var isFinishAdding = true
+        var isFinishSubtractionIndex = true
+        
+        // 計算がIntかDoubleか分別
+        for string in calcArray {
+            if string.containsString(".") {
+                isDouble = true
+            }
         }
         
-        return nil
+        if isDouble {
+            repeat {
+                // ×
+                if let integrationIndex = calcArray.indexOf("×") {
+                    // 末尾でない
+                    if integrationIndex != calcArray.count - 1 {
+                        let totalNumber = Double(calcArray[integrationIndex - 1])! * Double(calcArray[integrationIndex + 1])!
+                        // 不要になった値らを削除
+                        calcArray.removeRange(Range(integrationIndex - 1...integrationIndex + 1))
+                        calcArray.insert(String(totalNumber), atIndex: integrationIndex - 1)
+                    } else {
+                        isFinishIntegration = false
+                    }
+                } else {
+                    isFinishIntegration = false
+                }
+                // ÷
+                if let divisionIndex = calcArray.indexOf("÷") {
+                    // 末尾でない
+                    if divisionIndex != calcArray.count - 1 {
+                        let totalNumber = Double(calcArray[divisionIndex - 1])! / Double(calcArray[divisionIndex + 1])!
+                        // 不要になった値らを削除
+                        calcArray.removeRange(Range(divisionIndex - 1...divisionIndex + 1))
+                        calcArray.insert(String(totalNumber), atIndex: divisionIndex - 1)
+                    } else {
+                        isFinishDivision = false
+                    }
+                } else {
+                    isFinishDivision = false
+                }
+            } while (isFinishIntegration || isFinishDivision)
+            
+            repeat {
+                // +
+                if let addingIndex = calcArray.indexOf("+") {
+                    // 末尾でない
+                    if addingIndex != calcArray.count - 1 {
+                        let totalNumber = Double(calcArray[addingIndex - 1])! + Double(calcArray[addingIndex + 1])!
+                        // 不要になった値らを削除
+                        calcArray.removeRange(Range(addingIndex - 1...addingIndex + 1))
+                        calcArray.insert(String(totalNumber), atIndex: addingIndex - 1)
+                    } else {
+                        isFinishAdding = false
+                    }
+                } else {
+                    isFinishAdding = false
+                }
+                // -
+                if let subtractionIndex = calcArray.indexOf("-") {
+                    // 末尾でない
+                    if subtractionIndex != calcArray.count - 1 {
+                        let totalNumber = Double(calcArray[subtractionIndex - 1])! - Double(calcArray[subtractionIndex + 1])!
+                        // 不要になった値らを削除
+                        calcArray.removeRange(Range(subtractionIndex - 1...subtractionIndex + 1))
+                        calcArray.insert(String(totalNumber), atIndex: subtractionIndex - 1)
+                    } else {
+                        isFinishSubtractionIndex = false
+                    }
+                } else {
+                    isFinishSubtractionIndex = false
+                }
+            } while (isFinishAdding || isFinishSubtractionIndex)
+        } else {
+            repeat {
+                // ×
+                if let integrationIndex = calcArray.indexOf("×") {
+                    // 末尾でない
+                    if integrationIndex != calcArray.count - 1 {
+                        let totalNumber = Int(calcArray[integrationIndex - 1])! * Int(calcArray[integrationIndex + 1])!
+                        // 不要になった値らを削除
+                        calcArray.removeRange(Range(integrationIndex - 1...integrationIndex + 1))
+                        calcArray.insert(String(totalNumber), atIndex: integrationIndex - 1)
+                    } else {
+                        isFinishIntegration = false
+                    }
+                } else {
+                    isFinishIntegration = false
+                }
+                // ÷
+                if let divisionIndex = calcArray.indexOf("÷") {
+                    // 末尾でない
+                    if divisionIndex != calcArray.count - 1 {
+                        let totalNumber = Int(calcArray[divisionIndex - 1])! / Int(calcArray[divisionIndex + 1])!
+                        // 不要になった値らを削除
+                        calcArray.removeRange(Range(divisionIndex - 1...divisionIndex + 1))
+                        calcArray.insert(String(totalNumber), atIndex: divisionIndex - 1)
+                    } else {
+                        isFinishDivision = false
+                    }
+                } else {
+                    isFinishDivision = false
+                }
+            } while (isFinishIntegration || isFinishDivision)
+            
+            repeat {
+                // +
+                if let addingIndex = calcArray.indexOf("+") {
+                    // 末尾でない
+                    if addingIndex != calcArray.count - 1 {
+                        let totalNumber = Int(calcArray[addingIndex - 1])! + Int(calcArray[addingIndex + 1])!
+                        // 不要になった値らを削除
+                        calcArray.removeRange(Range(addingIndex - 1...addingIndex + 1))
+                        calcArray.insert(String(totalNumber), atIndex: addingIndex - 1)
+                    } else {
+                        isFinishAdding = false
+                    }
+                } else {
+                    isFinishAdding = false
+                }
+                // -
+                if let subtractionIndex = calcArray.indexOf("-") {
+                    // 末尾でない
+                    if subtractionIndex != calcArray.count - 1 {
+                        let totalNumber = Int(calcArray[subtractionIndex - 1])! - Int(calcArray[subtractionIndex + 1])!
+                        // 不要になった値らを削除
+                        calcArray.removeRange(Range(subtractionIndex - 1...subtractionIndex + 1))
+                        calcArray.insert(String(totalNumber), atIndex: subtractionIndex - 1)
+                    } else {
+                        isFinishSubtractionIndex = false
+                    }
+                } else {
+                    isFinishSubtractionIndex = false
+                }
+            } while (isFinishAdding || isFinishSubtractionIndex)
+        }
+        
+        return calcArray
     }
 }

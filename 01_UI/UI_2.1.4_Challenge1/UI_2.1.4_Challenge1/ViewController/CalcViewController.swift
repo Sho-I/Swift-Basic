@@ -19,9 +19,10 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
     private let numSections = 1
     var keepRect = CGRectZero
     
-    var inputNumber = String()
-    var isAllowNumberDelete = false
-    var inputArray = [String]()
+    var inputNumber = "0"               // 数字の桁数カウント用
+    var isInputNumber = false           // 数字が入力されたかのフラグ
+    var isAllowNumberDelete = false     // inputNumberを消去していいかのフラグ
+    var inputArray: [String] = ["0"]    // 入力履歴
     var isClear = false
     // C,±,%
     let CELL_BG_COLOR_GRAY_R: CGFloat = 0xc0/0xff
@@ -73,9 +74,11 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
             // AC/C クリア
 //            if isClear {
                 inputNumber.removeAll()
+                inputNumber = "0"
                 isAllowNumberDelete = false
                 inputArray.removeAll()
-                displayLabel.text = "0"
+                inputArray = ["0"]
+                displayLabel.text = inputNumber
 //            }
         case 1:
             // ±,
@@ -98,36 +101,36 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
                 // 文字数制限により入力受け付けない
                 return false
             }
-            // 0000の表示防止
+            // 0000の表示防止(Int型のみ)
             if !inputNumber.containsString(".") {
                 inputNumber = moldingZero(inputNumber)
             }
+            isInputNumber = true
             displayLabel.text = inputNumber
-        case 3, 7:
-            // ÷, ×
-            calculate(inputArray)
+        case 3, 7, 11, 15, 18:
+            // ÷, ×, -, +, =
             commonPostProcessing(index)
-        case 11, 15:
-            // -, +
-            calculate(inputArray)
-            commonPostProcessing(index)
+            inputArray = calculate(inputArray)
+            
+            if index == 18 {
+                guard let finishString = inputArray.first else {
+                    return false
+                }
+                displayLabel.text = finishString
+                // 継続して計算できるように
+                inputNumber = finishString
+                isInputNumber = true
+                inputArray.removeAll()
+                inputArray = ["0"]
+            }
         case 17:
             // 小数点
             inputNumber.append(Character(symbolArray[index]))
-        case 18:
-            // =
-            calculate(inputArray)
-            commonPostProcessing(index)
         default:
-            // 数字以外が入力されたので、配列に格納&数字用格納変数は消去
-//            inputArray.append(inputNumber)
-//            isAllowNumberDelete = true
-//            inputArray.append(symbolArray[index])
-//            commonCalc(index)
-            let tmpStr = calculate(inputArray)
-//            let tmpCalc = Int(tmpStr)
-//            displayLabel.text = String(tmpCalc)
+            break
         }
+        
+        print(inputArray)
         
         if index == 0 {
             symbolArray[0] = "AC"
@@ -142,9 +145,27 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
     
     // MARK: Private Method
     private func commonPostProcessing(index: Int) {
-        // 数字以外が入力されたので、配列に格納&数字用格納変数は消去
-        inputArray.append(inputNumber)
-        isAllowNumberDelete = true
+        if isInputNumber {
+            // 初期の0のみであれば、消去して入れ直す(四則演算記号を連続押ししてる場合も入れる前に削除しているため下記条件を満たせる)
+            if inputArray.count == 1 && inputArray.first! == "0" {
+                inputArray.removeAll()
+            }
+            // 数字以外が入力されたので、配列に格納&数字用格納変数は消去
+            inputArray.append(inputNumber)
+            isInputNumber = false
+            isAllowNumberDelete = true
+        }
+        
+        // 四則演算記号は常に入力(但し、直前も同系記号の場合、前プロセスで削除している)
+        guard let checkString = inputArray.last else {
+            return
+        }
+        switch checkString {
+        case "+", "-", "×", "÷", "=":
+            inputArray.removeLast()
+        default:
+            break
+        }
         inputArray.append(symbolArray[index])
     }
     
