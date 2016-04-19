@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  UI_2.1.4_Challenge1
+//  UI_2.1.17_Challenge2
 //
-//  Created by ShoIto on 2016/03/26.
-//  Copyright © 2016年 ShoIto. All rights reserved.
+//  Created by Aryzae on 2016/04/02.
+//  Copyright © 2016年 Aryzae. All rights reserved.
 //
 
 import UIKit
