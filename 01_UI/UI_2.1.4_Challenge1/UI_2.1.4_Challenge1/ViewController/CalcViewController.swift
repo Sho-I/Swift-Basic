@@ -91,11 +91,13 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
             displayLabel.text = inputNumber
         case 4...6, 8...10, 12...14, 16:
             // 数字
+            // Deleteフラグtrueなら削除
+            if isAllowNumberDelete {
+                inputNumber.removeAll()
+                isAllowNumberDelete = false
+            }
+            //文字数による入力制限
             if inputNumber.characters.count < 9 {
-                if isAllowNumberDelete {
-                    inputNumber.removeAll()
-                    isAllowNumberDelete = false
-                }
                 inputNumber.append(Character(symbolArray[index]))
             } else {
                 // 文字数制限により入力受け付けない
@@ -107,25 +109,29 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
             }
             isInputNumber = true
             displayLabel.text = inputNumber
-        case 3, 7, 11, 15, 18:
-            // ÷, ×, -, +, =
+        case 3, 7, 11, 15:
+            // ÷, ×, -, +
+            commonPostProcessing(index)
+            inputArray = calculate(inputArray)
+        case 17:
+            // 小数点
+            if inputNumber.characters.count < 9 {
+                inputNumber.append(Character(symbolArray[index]))
+            }
+        case 18:
+            // =
             commonPostProcessing(index)
             inputArray = calculate(inputArray)
             
-            if index == 18 {
-                guard let finishString = inputArray.first else {
-                    return false
-                }
-                displayLabel.text = finishString
-                // 継続して計算できるように
-                inputNumber = finishString
-                isInputNumber = true
-                inputArray.removeAll()
-                inputArray = ["0"]
+            guard let finishString = inputArray.first else {
+                return false
             }
-        case 17:
-            // 小数点
-            inputNumber.append(Character(symbolArray[index]))
+            displayLabel.text = finishString
+            // 継続して計算できるように
+            inputNumber = finishString
+            isInputNumber = true
+            inputArray.removeAll()
+            inputArray = ["0"]
         default:
             break
         }
@@ -160,11 +166,14 @@ class CalcViewController: UIViewController, UICollectionViewDelegate, UICollecti
         guard let checkString = inputArray.last else {
             return
         }
-        switch checkString {
-        case "+", "-", "×", "÷", "=":
-            inputArray.removeLast()
-        default:
-            break
+        // "="は除く
+        if index != 18 {
+            switch checkString {
+            case "+", "-", "×", "÷":
+                inputArray.removeLast()
+            default:
+                break
+            }
         }
         inputArray.append(symbolArray[index])
     }

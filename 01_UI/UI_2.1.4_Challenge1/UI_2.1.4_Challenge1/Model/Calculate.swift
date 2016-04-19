@@ -16,6 +16,7 @@ protocol CalcProtocol {
 
 extension CalcProtocol {
     
+    // 連続した0を整形
     func moldingZero(number: String) -> String {
         guard let intNumber = Int(number) else {
             return ""
@@ -23,6 +24,7 @@ extension CalcProtocol {
         return String(intNumber)
     }
     
+    // 計算処理 ± %
     func calculate(numberString: String, symbol: String) -> String {
         if numberString.containsString(".") {
             guard let number = Double(numberString) else {
@@ -50,12 +52,15 @@ extension CalcProtocol {
         return "0"
     }
     
+    // 計算処理 + - * / =
     func calculate(argumentArray: [String]) -> [String] {
         // 1+2+     3'+
         // 1+2*3+   7'+
         // 1+2*3*   1+6'*
         // 2*3*     6'*
         // 2*3+     6'+
+        // 2+=      4'
+        // 2*=      4'
         var calcArray = argumentArray
         var isDouble = false
         // repeat用フラグ
@@ -71,6 +76,34 @@ extension CalcProtocol {
             }
         }
         
+        // += -= *= /= の式置き換え
+        if let equalIndex = calcArray.indexOf("=") {
+            switch calcArray[equalIndex - 1] {
+            case "+", "-", "×", "÷":
+                if isDouble {
+                    guard let leftNumber = Double(calcArray[equalIndex - 2]) else {
+                        return calcArray
+                    }
+                    calcArray.insert(String(leftNumber), atIndex: equalIndex)
+                } else {
+                    guard let leftNumber = Int(calcArray[equalIndex - 2]) else {
+                        return calcArray
+                    }
+                    calcArray.insert(String(leftNumber), atIndex: equalIndex)
+                }
+            default:
+                break
+            }
+        }
+        
+        // 計算の優先度考慮のための処理
+        if calcArray[1] == "+" || calcArray[1] == "-" {
+            if calcArray.count < 4 {
+                return calcArray
+            }
+        }
+        
+        // 計算実処理
         if isDouble {
             repeat {
                 // ×
@@ -82,7 +115,8 @@ extension CalcProtocol {
                         calcArray.removeRange(Range(integrationIndex - 1...integrationIndex + 1))
                         calcArray.insert(String(totalNumber), atIndex: integrationIndex - 1)
                     } else {
-                        isFinishIntegration = false
+                        // まだ計算する段階ではないのでreturn ex.1+2*3*
+                        return calcArray
                     }
                 } else {
                     isFinishIntegration = false
@@ -96,7 +130,8 @@ extension CalcProtocol {
                         calcArray.removeRange(Range(divisionIndex - 1...divisionIndex + 1))
                         calcArray.insert(String(totalNumber), atIndex: divisionIndex - 1)
                     } else {
-                        isFinishDivision = false
+                        // まだ計算する段階ではないのでreturn ex.1+2*3*
+                        return calcArray
                     }
                 } else {
                     isFinishDivision = false
@@ -144,7 +179,8 @@ extension CalcProtocol {
                         calcArray.removeRange(Range(integrationIndex - 1...integrationIndex + 1))
                         calcArray.insert(String(totalNumber), atIndex: integrationIndex - 1)
                     } else {
-                        isFinishIntegration = false
+                        // まだ計算する段階ではないのでreturn ex.1+2*3*
+                        return calcArray
                     }
                 } else {
                     isFinishIntegration = false
@@ -158,7 +194,8 @@ extension CalcProtocol {
                         calcArray.removeRange(Range(divisionIndex - 1...divisionIndex + 1))
                         calcArray.insert(String(totalNumber), atIndex: divisionIndex - 1)
                     } else {
-                        isFinishDivision = false
+                        // まだ計算する段階ではないのでreturn ex.1+2*3*
+                        return calcArray
                     }
                 } else {
                     isFinishDivision = false
