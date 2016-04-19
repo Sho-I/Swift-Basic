@@ -1,0 +1,10 @@
+diff a/01_UI/UI_2.1.4_Challenge1/UI_2.1.4_Challenge1/Base.lproj/Main.storyboard b/01_UI/UI_2.1.4_Challenge1/UI_2.1.4_Challenge1/Base.lproj/Main.storyboard	(rejected hunks)
+@@ -46,7 +46,7 @@
+                                 <color key="backgroundColor" red="0.96470588239999999" green="0.82613404609999996" blue="0.63150947599999996" alpha="1" colorSpace="calibratedRGB"/>
+                                 <collectionViewLayout key="collectionViewLayout" id="v8t-94-Osj" customClass="CustomCollectionViewLayout" customModule="UI_2_1_4_Challenge1" customModuleProvider="target"/>
+                                 <cells>
+-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="oY6-kr-RDY" customClass="CustomButtonCell" customModule="UI_2_1_4_Challenge1" customModuleProvider="target">
++                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomButtonCellId" id="oY6-kr-RDY" customClass="CustomButtonCell" customModule="UI_2_1_4_Challenge1" customModuleProvider="target">
+                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                         <autoresizingMask key="autoresizingMask"/>
+                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
