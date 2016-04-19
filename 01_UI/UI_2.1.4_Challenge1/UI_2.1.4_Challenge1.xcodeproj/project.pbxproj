@@ -8,28 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		C61A0A5B1CA6731100475BAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A0A5A1CA6731100475BAA /* AppDelegate.swift */; };
+		C61A0A5D1CA6731100475BAA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A0A5C1CA6731100475BAA /* ViewController.swift */; };
+		C61A0A601CA6731100475BAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C61A0A5E1CA6731100475BAA /* Main.storyboard */; };
 		C61A0A621CA6731100475BAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C61A0A611CA6731100475BAA /* Assets.xcassets */; };
 		C61A0A651CA6731100475BAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C61A0A631CA6731100475BAA /* LaunchScreen.storyboard */; };
-		C698F2091CBD423F00DC82FD /* SF-UI-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C698F1F41CBD420A00DC82FD /* SF-UI-Display-Thin.otf */; };
-		C698F21F1CC21E6200DC82FD /* CustomCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F2181CC21E6200DC82FD /* CustomCollectionViewFlowLayout.swift */; };
-		C698F2201CC21E6200DC82FD /* CustomButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F21C1CC21E6200DC82FD /* CustomButtonCell.swift */; };
-		C698F2211CC21E6200DC82FD /* CalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F21E1CC21E6200DC82FD /* CalcViewController.swift */; };
-		C698F2231CC21EED00DC82FD /* Calculate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C698F2221CC21EED00DC82FD /* Calculate.swift */; };
-		C6F3C7701CB8E87D004BD2A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C61A0A5E1CA6731100475BAA /* Main.storyboard */; };
+		C61A0A6D1CA6922500475BAA /* NumberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A0A6C1CA6922500475BAA /* NumberCell.swift */; };
+		C61A0A6F1CA69A5000475BAA /* SymbolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C61A0A6E1CA69A5000475BAA /* SymbolCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C61A0A571CA6731100475BAA /* UI_2.1.4_Challenge1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UI_2.1.4_Challenge1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C61A0A5A1CA6731100475BAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C61A0A5C1CA6731100475BAA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C61A0A5F1CA6731100475BAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C61A0A611CA6731100475BAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C61A0A641CA6731100475BAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C61A0A661CA6731100475BAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C698F1F41CBD420A00DC82FD /* SF-UI-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-UI-Display-Thin.otf"; sourceTree = "<group>"; };
-		C698F2181CC21E6200DC82FD /* CustomCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		C698F21C1CC21E6200DC82FD /* CustomButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonCell.swift; sourceTree = "<group>"; };
-		C698F21E1CC21E6200DC82FD /* CalcViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcViewController.swift; sourceTree = "<group>"; };
-		C698F2221CC21EED00DC82FD /* Calculate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculate.swift; sourceTree = "<group>"; };
+		C61A0A6C1CA6922500475BAA /* NumberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberCell.swift; sourceTree = "<group>"; };
+		C61A0A6E1CA69A5000475BAA /* SymbolCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,83 +58,16 @@
 		C61A0A591CA6731100475BAA /* UI_2.1.4_Challenge1 */ = {
 			isa = PBXGroup;
 			children = (
-				C698F2171CC21E6200DC82FD /* Controller */,
-				C698F2191CC21E6200DC82FD /* Model */,
-				C698F21A1CC21E6200DC82FD /* View */,
-				C698F21D1CC21E6200DC82FD /* ViewController */,
-				C6F3C7371CB69EF4004BD2A4 /* Resources */,
 				C61A0A5A1CA6731100475BAA /* AppDelegate.swift */,
+				C61A0A5C1CA6731100475BAA /* ViewController.swift */,
+				C61A0A6C1CA6922500475BAA /* NumberCell.swift */,
+				C61A0A6E1CA69A5000475BAA /* SymbolCell.swift */,
 				C61A0A5E1CA6731100475BAA /* Main.storyboard */,
 				C61A0A611CA6731100475BAA /* Assets.xcassets */,
 				C61A0A631CA6731100475BAA /* LaunchScreen.storyboard */,
 				C61A0A661CA6731100475BAA /* Info.plist */,
 			);
 			path = UI_2.1.4_Challenge1;
-			sourceTree = "<group>";
-		};
-		C698F2171CC21E6200DC82FD /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				C698F2181CC21E6200DC82FD /* CustomCollectionViewFlowLayout.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		C698F2191CC21E6200DC82FD /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				C698F2221CC21EED00DC82FD /* Calculate.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C698F21A1CC21E6200DC82FD /* View */ = {
-			isa = PBXGroup;
-			children = (
-				C698F21B1CC21E6200DC82FD /* Cell */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		C698F21B1CC21E6200DC82FD /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				C698F21C1CC21E6200DC82FD /* CustomButtonCell.swift */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		C698F21D1CC21E6200DC82FD /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C698F21E1CC21E6200DC82FD /* CalcViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		C6F3C7371CB69EF4004BD2A4 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				C6F3C7381CB69EFE004BD2A4 /* Fonts */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		C6F3C7381CB69EFE004BD2A4 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-				C6F3C73B1CB69F5A004BD2A4 /* SF-UI */,
-			);
-			name = Fonts;
-			sourceTree = "<group>";
-		};
-		C6F3C73B1CB69F5A004BD2A4 /* SF-UI */ = {
-			isa = PBXGroup;
-			children = (
-				C698F1F41CBD420A00DC82FD /* SF-UI-Display-Thin.otf */,
-			);
-			name = "SF-UI";
-			path = "Resources/Fonts/SF-UI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,10 +128,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C698F2091CBD423F00DC82FD /* SF-UI-Display-Thin.otf in Resources */,
-				C6F3C7701CB8E87D004BD2A4 /* Main.storyboard in Resources */,
 				C61A0A651CA6731100475BAA /* LaunchScreen.storyboard in Resources */,
 				C61A0A621CA6731100475BAA /* Assets.xcassets in Resources */,
+				C61A0A601CA6731100475BAA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,11 +141,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C698F2201CC21E6200DC82FD /* CustomButtonCell.swift in Sources */,
-				C698F2211CC21E6200DC82FD /* CalcViewController.swift in Sources */,
+				C61A0A5D1CA6731100475BAA /* ViewController.swift in Sources */,
+				C61A0A6F1CA69A5000475BAA /* SymbolCell.swift in Sources */,
+				C61A0A6D1CA6922500475BAA /* NumberCell.swift in Sources */,
 				C61A0A5B1CA6731100475BAA /* AppDelegate.swift in Sources */,
-				C698F2231CC21EED00DC82FD /* Calculate.swift in Sources */,
-				C698F21F1CC21E6200DC82FD /* CustomCollectionViewFlowLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,7 +298,6 @@
 				C61A0A6B1CA6731100475BAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
